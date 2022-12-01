@@ -65,6 +65,7 @@ dependencies {
         "androidx.compose.material:material:1.1.1",
         "com.google.dagger:hilt-android:${Versions.HILT}",
         "androidx.hilt:hilt-navigation-compose:1.0.0",
+        "com.jakewharton.timber:timber:5.0.1",
     ).forEach { dependency ->
         implementation(dependency)
     }

@@ -1,4 +1,4 @@
-package com.tregub.acromine
+package com.tregub.acromine.screen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
