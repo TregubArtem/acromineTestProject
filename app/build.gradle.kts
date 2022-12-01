@@ -48,39 +48,29 @@ android {
             findByName(dir)?.java?.srcDirs(project.file("src/$dir/kotlin"))
         }
     }
-    buildFeatures.compose = true
+    buildFeatures.dataBinding = true
     kotlinOptions.jvmTarget = "1.8"
     compileOptions.encoding = "UTF-8"
-    composeOptions.kotlinCompilerExtensionVersion = Versions.COMPOSE
     packagingOptions.resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
 }
 
 dependencies {
     arrayOf(
-        "androidx.core:core-ktx:1.7.0",
+        "androidx.core:core-ktx:1.9.0",
         "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1",
-        "androidx.activity:activity-compose:${Versions.COMPOSE}",
-        "androidx.compose.ui:ui:${Versions.COMPOSE}",
-        "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE}",
-        "androidx.compose.material:material:1.1.1",
+        "androidx.appcompat:appcompat:1.5.1",
+        "com.google.android.material:material:1.7.0",
+        "androidx.constraintlayout:constraintlayout:2.1.4",
         "com.google.dagger:hilt-android:${Versions.HILT}",
-        "androidx.hilt:hilt-navigation-compose:1.0.0",
         "com.jakewharton.timber:timber:5.0.1",
     ).forEach { dependency ->
         implementation(dependency)
     }
     kapt("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
-    arrayOf(
-        "androidx.compose.ui:ui-tooling:${Versions.COMPOSE}",
-        "androidx.compose.ui:ui-test-manifest:${Versions.COMPOSE}",
-    ).forEach { dependency ->
-        debugImplementation(dependency)
-    }
     testImplementation("junit:junit:4.13.2")
     arrayOf(
         "androidx.test.ext:junit:1.1.4",
         "androidx.test.espresso:espresso-core:3.5.0",
-        "androidx.compose.ui:ui-test-junit4:${Versions.COMPOSE}",
     ).forEach { dependency ->
         androidTestImplementation(dependency)
     }
