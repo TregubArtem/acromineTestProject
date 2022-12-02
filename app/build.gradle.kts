@@ -57,7 +57,7 @@ android {
 
 dependencies {
     arrayOf(
-        "androidx.core:core-ktx:1.7.0",
+        "androidx.core:core-ktx:1.9.0",
         "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1",
         "androidx.activity:activity-compose:${Versions.COMPOSE}",
         "androidx.compose.ui:ui:${Versions.COMPOSE}",
@@ -66,6 +66,11 @@ dependencies {
         "com.google.dagger:hilt-android:${Versions.HILT}",
         "androidx.hilt:hilt-navigation-compose:1.0.0",
         "com.jakewharton.timber:timber:5.0.1",
+        "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}",
+        "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT}",
+        "com.squareup.okhttp3:okhttp:${Versions.OK_HTTP}",
+        "com.squareup.okhttp3:logging-interceptor:${Versions.OK_HTTP}",
+        "com.squareup.moshi:moshi:${Versions.MOSHI}",
     ).forEach { dependency ->
         implementation(dependency)
     }
@@ -75,6 +80,12 @@ dependencies {
         "androidx.compose.ui:ui-test-manifest:${Versions.COMPOSE}",
     ).forEach { dependency ->
         debugImplementation(dependency)
+    }
+    arrayOf(
+        "com.google.dagger:hilt-android-compiler:${Versions.HILT}",
+        "com.squareup.moshi:moshi-kotlin-codegen:${Versions.MOSHI}",
+    ).forEach { dependency ->
+        kapt(dependency)
     }
     testImplementation("junit:junit:4.13.2")
     arrayOf(
