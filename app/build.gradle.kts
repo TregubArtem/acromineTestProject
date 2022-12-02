@@ -61,6 +61,8 @@ dependencies {
         "androidx.appcompat:appcompat:1.5.1",
         "com.google.android.material:material:1.7.0",
         "androidx.constraintlayout:constraintlayout:2.1.4",
+        "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0",
+        "androidx.recyclerview:recyclerview:1.2.1",
         "com.google.dagger:hilt-android:${Versions.HILT}",
         "com.jakewharton.timber:timber:5.0.1",
     ).forEach { dependency ->
