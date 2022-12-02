@@ -1,6 +1,7 @@
 package com.tregub.acromine.feature.dependency
 
 import javax.inject.Qualifier
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Helps DI to understand what kind of object is needed
@@ -29,4 +30,18 @@ annotation class DiConstant {
     @Qualifier
     @Retention
     annotation class AcronymsDefinitionsCacheSize
+
+    /**
+     * Represents a [CoroutineContext] that can be used for I/O operations.
+     */
+    @Qualifier
+    @Retention
+    annotation class CoroutineContextIO
+
+    /**
+     * Represents a [CoroutineContext] that implies computations outside the UI thread, but not I/O
+     */
+    @Qualifier
+    @Retention
+    annotation class CoroutineContextNonUI
 }
