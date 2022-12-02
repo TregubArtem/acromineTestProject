@@ -65,10 +65,20 @@ dependencies {
         "androidx.recyclerview:recyclerview:1.2.1",
         "com.google.dagger:hilt-android:${Versions.HILT}",
         "com.jakewharton.timber:timber:5.0.1",
+        "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}",
+        "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT}",
+        "com.squareup.okhttp3:okhttp:${Versions.OK_HTTP}",
+        "com.squareup.okhttp3:logging-interceptor:${Versions.OK_HTTP}",
+        "com.squareup.moshi:moshi:${Versions.MOSHI}"
     ).forEach { dependency ->
         implementation(dependency)
     }
-    kapt("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
+    arrayOf(
+        "com.google.dagger:hilt-android-compiler:${Versions.HILT}",
+        "com.squareup.moshi:moshi-kotlin-codegen:${Versions.MOSHI}",
+    ).forEach { dependency ->
+        kapt(dependency)
+    }
     testImplementation("junit:junit:4.13.2")
     arrayOf(
         "androidx.test.ext:junit:1.1.4",
