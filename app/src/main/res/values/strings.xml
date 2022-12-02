@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name" translatable="false">Acromine</string>
+    <string name="main_search_acronyms">Search for acronyms</string>
 </resources>

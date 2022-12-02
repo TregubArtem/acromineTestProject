@@ -2,7 +2,7 @@ package com.tregub.acromine.screen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.tregub.acromine.R
+import com.tregub.acromine.databinding.ActivityMainBinding
 
 /**
  * The root class that represents the owner of the entire user interface.
@@ -12,6 +12,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(ActivityMainBinding.inflate(layoutInflater).root)
     }
 }
