@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,6 +15,7 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
+import kotlin.coroutines.CoroutineContext
 
 /**
  * The definition of initialization for objects
@@ -70,4 +72,19 @@ class ProvidesModule {
             .addConverterFactory(converterFactory)
             .build()
             .create(AcronymsApi::class.java)
+
+    @DiConstant.AcronymsDefinitionsCacheSize
+    @Provides
+    fun getAcronymsDefinitionsCacheSize(): Int =
+        4 * 1024
+
+    @DiConstant.CoroutineContextIO
+    @Provides
+    fun getCoroutineContextIO(): CoroutineContext =
+        Dispatchers.IO
+
+    @DiConstant.CoroutineContextNonUI
+    @Provides
+    fun getCoroutineContextNonUI(): CoroutineContext =
+        Dispatchers.Default
 }
