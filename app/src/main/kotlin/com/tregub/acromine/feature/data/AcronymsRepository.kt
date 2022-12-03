@@ -44,7 +44,7 @@ class AcronymsRepositoryImpl @Inject constructor(
     override suspend fun getDefinitions(acronym: String): List<AcronymDefinition> {
         var result: List<AcronymDefinition> = withContext(nonUiContext) { cache[acronym] }
         if (result.isNotEmpty()) {
-            Timber.i("getDefinitions from local: $acronym - ${result.size}")
+            Timber.v("getDefinitions from local: $acronym - ${result.size}")
             return result
         }
         withContext(ioContext) {
@@ -54,7 +54,7 @@ class AcronymsRepositoryImpl @Inject constructor(
             }
             result = cache[acronym]
         }
-        Timber.i("getDefinitions from remote: $acronym - ${result.size}")
+        Timber.v("getDefinitions from remote: $acronym - ${result.size}")
         return result
     }
 }
