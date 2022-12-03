@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.tregub.acromine.screen.data.AcronymDefinitionViewState" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        tools:background="#00F"
+        android:padding="@dimen/default_indent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardElevation="@dimen/default_elevation"
+            app:cardCornerRadius="@dimen/default_radius"
+            tools:cardBackgroundColor="#0F0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="5:2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClickListener="@{(view)->view}"
+                android:background="@drawable/sel_background"
+                android:padding="@dimen/default_indent">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="@{data.name}"
+                    tools:text="Tregub Artem - Android Engineer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintGuide_percent="0.15"
+                    android:orientation="vertical" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    tools:text="666 is the number of occurrences; 2022 is the year when the definition appeared for the first time; 4 is the amount of alternative definitions."
+                    android:ellipsize="end"
+                    android:layout_marginTop="@dimen/default_indent"
+                    android:textStyle="italic"
+                    android:text="@{@string/main_acronym_definition_details_format(data.frequency, data.year, data.variationsCount)}"
+                    app:layout_constraintTop_toBottomOf="@+id/name"
+                    app:layout_constraintStart_toStartOf="@+id/guide_vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
