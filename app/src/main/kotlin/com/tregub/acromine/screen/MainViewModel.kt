@@ -1,5 +1,6 @@
 package com.tregub.acromine.screen
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tregub.acromine.feature.data.AcronymsRepository
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import org.jetbrains.annotations.TestOnly
 import timber.log.Timber
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
@@ -30,11 +32,13 @@ class MainViewModel @Inject constructor(
     private val definitionMapper: AcronymDefinitionMapper,
 ) : ViewModel() {
 
-    private companion object {
+    companion object {
 
         /**
          * Used to wait before delivering the final view state in [actualAcronym]
          */
+        @TestOnly
+        @VisibleForTesting
         const val DEBOUNCE_DELAY_MS: Long = 1_000L
     }
 
@@ -59,9 +63,10 @@ class MainViewModel @Inject constructor(
      *
      * @param nonUiContext where the subscription to [actualAcronym] should be done
      */
-    @Suppress("ProtectedInFinal")
     @Inject
-    protected fun onNonUiContextReady(
+    @TestOnly
+    @VisibleForTesting(otherwise = VisibleForTesting.PROTECTED)
+    fun onNonUiContextReady(
         @DiConstant.CoroutineContextNonUI
         nonUiContext: CoroutineContext,
     ) {
