@@ -2,7 +2,6 @@ package com.tregub.acromine.feature.dependency
 
 import com.squareup.moshi.Moshi
 import com.tregub.acromine.feature.data.source.remote.AcronymsApi
-import com.tregub.acromine.feature.whenBuildType
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,7 +9,6 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.Dispatchers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -29,21 +27,6 @@ class ProvidesModule {
     @Provides
     fun getApiBaseUrl(): String =
         "http://www.nactem.ac.uk/software/acromine/"
-
-    @DiConstant.HttpInterceptors
-    @Provides
-    fun getHttpInterceptors(): List<Interceptor> {
-        val interceptors: MutableList<Interceptor> = mutableListOf()
-        whenBuildType(
-            onRelease = { /* no interceptors needed */ },
-            onDebug = {
-                interceptors += HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                }
-            },
-        )
-        return interceptors
-    }
 
     @Provides
     fun getHttpClient(
