@@ -68,6 +68,7 @@ android {
         jvmTarget = "1.8"
         freeCompilerArgs = freeCompilerArgs + listOf(
             "-opt-in=kotlinx.coroutines.FlowPreview",
+            "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi",
         )
     }
     buildFeatures.compose = true
@@ -83,9 +84,9 @@ dependencies {
         "androidx.activity:activity-compose:${Versions.COMPOSE}",
         "androidx.compose.ui:ui:${Versions.COMPOSE}",
         "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE}",
-        "androidx.compose.material:material:1.1.1",
+        "androidx.compose.foundation:foundation:${Versions.COMPOSE}",
+        "androidx.compose.material:material:${Versions.COMPOSE}",
         "com.google.dagger:hilt-android:${Versions.HILT}",
-        "androidx.hilt:hilt-navigation-compose:1.0.0",
         "com.jakewharton.timber:timber:5.0.1",
         "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}",
         "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT}",
