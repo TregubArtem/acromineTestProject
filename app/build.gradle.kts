@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -19,7 +21,20 @@ android {
 
         testInstrumentationRunner = "com.tregub.acromine.HiltTestRunner"
     }
+    signingConfigs {
+        create("upload") {
+            val propertiesFile: File = file("upload_key.properties")
+            if (propertiesFile.exists()) {
+                val properties = Properties()
+                properties.load(propertiesFile.inputStream())
 
+                storeFile = file(properties["keystore"].toString())
+                storePassword = properties["keystorePassword"].toString()
+                keyAlias = properties["keyAlias"].toString()
+                keyPassword = properties["keyPassword"].toString()
+            }
+        }
+    }
     buildTypes {
         debug {
             isDebuggable = true
@@ -28,7 +43,8 @@ android {
         }
         release {
             isDebuggable = false
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("upload")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
