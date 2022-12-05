@@ -20,6 +20,7 @@
         <activity
             android:name=".screen.MainActivity"
             android:launchMode="singleInstance"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:exported="true">
 
             <intent-filter>
