@@ -3,7 +3,7 @@ package com.tregub.acromine.feature.data.source.local
 import com.tregub.acromine.feature.data.model.AcronymDefinition
 
 /**
- * A test implementation of [AcronymsCache] which is a wrapper for [MutableMap]
+ * Test implementation of [AcronymsCache] which is a wrapper for [MutableMap]
  */
 class AcronymsCacheTestImpl : AcronymsCache {
 

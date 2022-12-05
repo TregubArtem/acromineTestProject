@@ -4,7 +4,7 @@ import com.tregub.acromine.feature.data.model.AcronymDefinition
 import com.tregub.acromine.feature.data.model.AcronymWithDefinitions
 
 /**
- * A test implementation of [AcronymsApi] that provides different result for different acronyms:
+ * Test implementation of [AcronymsApi] that provides different result for different acronyms:
  * * [AcronymsApiTestImpl.ACRONYM_WITH_DEFINITIONS_NAME] -
  *  one instance of [AcronymWithDefinitions] which includes exactly one definition
  * * [AcronymsApiTestImpl.ACRONYM_WITHOUT_DEFINITIONS_NAME] - empty list without definitions
