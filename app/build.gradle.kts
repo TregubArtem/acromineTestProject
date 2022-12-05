@@ -48,8 +48,13 @@ android {
             findByName(dir)?.java?.srcDirs(project.file("src/$dir/kotlin"))
         }
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-opt-in=kotlinx.coroutines.FlowPreview",
+        )
+    }
     buildFeatures.compose = true
-    kotlinOptions.jvmTarget = "1.8"
     compileOptions.encoding = "UTF-8"
     composeOptions.kotlinCompilerExtensionVersion = Versions.COMPOSE
     packagingOptions.resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -58,7 +63,7 @@ android {
 dependencies {
     arrayOf(
         "androidx.core:core-ktx:1.9.0",
-        "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1",
+        "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1",
         "androidx.activity:activity-compose:${Versions.COMPOSE}",
         "androidx.compose.ui:ui:${Versions.COMPOSE}",
         "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE}",
