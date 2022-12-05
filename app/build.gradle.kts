@@ -95,7 +95,6 @@ dependencies {
     ).forEach { dependency ->
         implementation(dependency)
     }
-    kapt("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
     arrayOf(
         "androidx.compose.ui:ui-tooling:${Versions.COMPOSE}",
         "androidx.compose.ui:ui-test-manifest:${Versions.COMPOSE}",

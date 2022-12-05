@@ -21,7 +21,7 @@ object Versions {
 
     const val ANDROID: String = "7.3.1"
     const val HILT: String = "2.44.2"
-    const val KOTLIN: String = "1.7.22"
+    const val KOTLIN: String = "1.7.10"
     const val COMPOSE: String = "1.3.1"
     const val RETROFIT: String = "2.9.0"
     const val OK_HTTP: String = "4.9.1"
