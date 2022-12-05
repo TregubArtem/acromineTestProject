@@ -17,7 +17,7 @@ android {
         minSdk = AppConfig.MIN_SDK
         targetSdk = AppConfig.TARGET_SDK
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.tregub.acromine.HiltTestRunner"
     }
 
     buildTypes {
@@ -40,7 +40,7 @@ android {
         targetCompatibility(JavaVersion.VERSION_1_8)
     }
     sourceSets {
-        listOf(
+        arrayOf(
             "androidTest",
             "main",
             "test",
@@ -89,7 +89,9 @@ dependencies {
     arrayOf(
         "androidx.test.ext:junit:1.1.4",
         "androidx.test.espresso:espresso-core:3.5.0",
+        "com.google.dagger:hilt-android-testing:${Versions.HILT}",
     ).forEach { dependency ->
         androidTestImplementation(dependency)
     }
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
 }
