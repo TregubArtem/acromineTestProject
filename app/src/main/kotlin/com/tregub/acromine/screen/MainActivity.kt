@@ -37,6 +37,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -136,6 +138,11 @@ private fun InputAcronymSection(
     val keyboardActions: KeyboardActions = remember {
         KeyboardActions(onDone = { keyboard?.hide() })
     }
+    val placeholder: @Composable () -> Unit = remember {
+        {
+            Text(text = stringResource(id = R.string.main_search_acronyms))
+        }
+    }
     OutlinedTextField(
         value = name,
         onValueChange = onValueChange,
@@ -144,7 +151,9 @@ private fun InputAcronymSection(
         trailingIcon = null,
         keyboardOptions = keyboardOptions,
         keyboardActions = keyboardActions,
+        placeholder = placeholder,
         modifier = Modifier
+            .semantics { contentDescription = "Acronym Input Field" }
             .padding(
                 start = defaultIndentDp,
                 top = defaultIndentDp,
@@ -171,6 +180,7 @@ private fun ErrorHint(
                         start = defaultIndentDp,
                         end = defaultIndentDp,
                     )
+                    .semantics { contentDescription = "Acronym Search Error" }
             )
         }
     }
@@ -198,7 +208,11 @@ private fun DefinitionsSection(
         ) { state ->
             when (state) {
                 MainViewState.Loading -> {
-                    CircularProgressIndicator(modifier = Modifier.fillMaxWidth())
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .semantics { contentDescription = "Progress Indication" }
+                    )
                 }
                 is MainViewState.Success -> {
                     items = state.data
@@ -224,6 +238,7 @@ private fun DefinitionItemSection(
             )
             .fillMaxWidth()
             .aspectRatio(5 / 2F)
+            .semantics { contentDescription = "Acronym Definition" }
     ) {
         Column(
             modifier = Modifier
