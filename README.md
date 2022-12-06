@@ -1,4 +1,5 @@
 # ![App icon](/media/acronym.svg) Acromine
+Jetpack Compose variant of the app (see [Data binding variant here](https://github.com/TregubArtem/acromineTestProject/tree/binding))
 
 ## The task
 Create an App which can be used to get the meanings for acronyms.
@@ -10,7 +11,7 @@ Create an App which can be used to get the meanings for acronyms.
 ### Requirements
 * Use the following API http://www.nactem.ac.uk/software/acromine/rest.html
 * Project must be written in Native Android and Kotlin
-* Use MVVM architecture and Data binding
+* Use MVVM architecture and Jetpack Compose
 * You can use any third-party component for networking module
 * Basic testcases should be added
 * Handle all the possible error cases
