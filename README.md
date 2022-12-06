@@ -1,4 +1,5 @@
 # ![App icon](/media/acronym.svg) Acromine
+Data binding variant of the app (see [Jetpack Compose variant here](https://github.com/TregubArtem/acromineTestProject/tree/compose))
 
 ## The task
 Create an App which can be used to get the meanings for acronyms.
